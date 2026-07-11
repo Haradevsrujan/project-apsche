@@ -12,9 +12,21 @@ View your app in AI Studio: https://ai.studio/apps/81977259-8f7b-46da-8622-93f63
 
 **Prerequisites:**  Node.js
 
-
 1. Install dependencies:
    `npm install`
-2. Set the `GEMINI_API_KEY` in [.env.local](.env.local) to your Gemini API key
+2. Set the `GEMINI_API_KEY` in `.env` to your Gemini API key
 3. Run the app:
    `npm run dev`
+
+## Deploy to Render
+
+1. Sign in to Render and connect your GitHub repository.
+2. Create a new Web Service.
+3. Select `Docker` as the environment.
+4. Set the branch to `main`.
+5. Use the default service name or `project-apsche`.
+6. Add the environment variable:
+   - `GEMINI_API_KEY` = your Gemini API key
+7. Deploy. Render will use `Dockerfile` and the port assigned by Render.
+
+Render will automatically detect the `render.yaml` file and deploy your app on every push to `main`.

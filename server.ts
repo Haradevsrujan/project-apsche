@@ -158,7 +158,7 @@ Generate a complete and valid JSON response matching the requested schema. Do no
     });
   }
 
-  const port = 3000;
+  const port = process.env.PORT ? Number(process.env.PORT) : 3000;
   app.listen(port, '0.0.0.0', () => {
     console.log(`Server is running at http://localhost:${port} (NODE_ENV: ${process.env.NODE_ENV || 'development'})`);
   });
