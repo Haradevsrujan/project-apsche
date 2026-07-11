@@ -6,10 +6,21 @@ import { fileURLToPath } from 'url';
 
 dotenv.config();
 
-// Since __dirname and __filename are not available in ES Modules under some circumstances,
-// we derive them carefully.
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = path.dirname(__filename);
+// Derive __filename and __dirname in a way that works for both ESM and
+// CommonJS bundles. When `import.meta.url` is unavailable (e.g., after
+// bundling to CJS), fall back to sensible defaults so the server doesn't crash
+// at startup in production environments like Render.
+let __filename: string;
+let __dirname: string;
+try {
+  // Preferred approach for ESM environments
+  __filename = fileURLToPath(import.meta.url);
+  __dirname = path.dirname(__filename);
+} catch (err) {
+  // Fallback for CommonJS or bundled output where import.meta.url may be undefined
+  __filename = process.argv && process.argv[1] ? process.argv[1] : '';
+  __dirname = __filename ? path.dirname(__filename) : process.cwd();
+}
 
 async function startServer() {
   const app = express();
