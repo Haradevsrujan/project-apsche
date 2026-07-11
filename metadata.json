@@ -1,0 +1,6 @@
+{
+  "name": "HDI Predictor & Policy Reviewer",
+  "description": "An interactive, project-reviewer-focused Human Development Index (HDI) dashboard featuring real-time index computation, prebuilt development scenarios, dynamic policy impact simulators, and AI-powered national development recommendations.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
